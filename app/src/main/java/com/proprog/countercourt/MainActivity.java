@@ -12,11 +12,15 @@ import static android.R.attr.value;
 
 public class MainActivity extends AppCompatActivity {
 
+    int scoreTeamA = 0;
+    int scoreTeamB = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        displayForTeamA(7);
+        displayForTeamA(scoreTeamA);
+        displayForTeamB(scoreTeamB);
     }
 
     public void displayForTeamA(int score) {
@@ -25,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void hitThreeForA(View view) {
-        displayForTeamA(3);
+        scoreTeamA += 3;
+        displayForTeamA(scoreTeamA);
     }
 
     public void hitTwoForA(View view) {
@@ -33,12 +38,45 @@ public class MainActivity extends AppCompatActivity {
 //        numberFormat.setMinimumIntegerDigits(2);
 //        numberFormat.setMinimumFractionDigits(2);
 //        Log.i("App",numberFormat.format(2));
-        displayForTeamA(2);
+        scoreTeamA += 2;
+        displayForTeamA(scoreTeamA);
     }
 
 
     public void hitOneForA(View view) {
-        displayForTeamA(1);
+        scoreTeamA += 1;
+        displayForTeamA(scoreTeamA);
     }
 
+    public void displayForTeamB(int score) {
+        TextView scoreView = (TextView) findViewById(R.id.team_b_score);
+        scoreView.setText(String.valueOf(score));
+    }
+
+    public void hitThreeForB(View view) {
+        scoreTeamB += 3;
+        displayForTeamB(scoreTeamB);
+    }
+
+    public void hitTwoForB(View view) {
+//        NumberFormat numberFormat = NumberFormat.getInstance();
+//        numberFormat.setMinimumIntegerDigits(2);
+//        numberFormat.setMinimumFractionDigits(2);
+//        Log.i("App",numberFormat.format(2));
+        scoreTeamB += 2;
+        displayForTeamB(scoreTeamB);
+    }
+
+
+    public void hitOneForB(View view) {
+        scoreTeamB += 1;
+        displayForTeamB(scoreTeamB);
+    }
+
+    public void resetScore(View view) {
+        scoreTeamA = 0;
+        scoreTeamB = 0;
+        displayForTeamA(scoreTeamA);
+        displayForTeamB(scoreTeamB);
+    }
 }
